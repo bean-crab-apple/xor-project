@@ -17,3 +17,30 @@ def decode(binary):
     charIndex = int(binary, 2)
     return characters[charIndex]
 
+def XOR(bit1,bit2):
+    if bit1 == bit2:
+        return "0"
+    else:
+        return "1"
+
+def XORonbyte(byte, key):
+    byte = str(byte)
+    key = str(key)
+    ebyte = ""
+    for i in range(len(byte)):
+        ebyte += XOR(byte[i], key[(i % len(key))])
+    return ebyte
+
+def XORonchar(char, keychar):
+    bchar = encode(char)
+    bkeychar = encode(keychar)
+    ebchar = XORonbyte(bchar, bkeychar)
+    return decode(ebchar)
+
+def XORonstring(string, keystring):
+    estring = ""
+    for i in range(len(string)):
+        estring += XORonchar(string[i], keystring[(i % len(keystring))])
+    return estring
+
+print(XORonstring("Ej&AN&s&nNFDLaEY,&mBEmZ", "no it aint"))
