@@ -43,4 +43,6 @@ def XORonstring(string, keystring):
         estring += XORonchar(string[i], keystring[(i % len(keystring))])
     return estring
 
-print(XORonstring("Ej&AN&s&nNFDLaEY,&mBEmZ", "no it aint"))
+msg = input("What would you like to encode? ")
+key = input("what is your key? ")
+print(XORonstring(msg, key))
